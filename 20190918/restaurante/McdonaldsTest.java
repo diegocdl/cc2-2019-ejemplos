@@ -2,7 +2,7 @@ package restaurante;
 
 public class McdonaldsTest {
     public static void main(String[] args) {
-        Mcdonalds mc = new Mcdonalds(2, 4);
+        Mcdonalds mc = new Mcdonalds(2, 2);
         
         while(true) {
             try {
