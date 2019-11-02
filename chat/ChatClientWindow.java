@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 import java.awt.event.*;
 import java.net.Socket;
 
-public class Ventana implements ActionListener {
+public class ChatClientWindow implements ActionListener {
     public static final String IP = "localhost";
     public static final int PORT = 5000;
 
@@ -15,7 +15,7 @@ public class Ventana implements ActionListener {
     protected Socket socket;
     protected ChatClientThread chatClientThread;
 
-    public Ventana() {
+    public ChatClientWindow() {
         loadGUIComponents();
         connect2Server();
     }
@@ -73,6 +73,6 @@ public class Ventana implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        Ventana v = new Ventana();
+        ChatClientWindow v = new ChatClientWindow();
     }
 }
