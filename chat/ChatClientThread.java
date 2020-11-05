@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.DataOutput;
-import java.io.DataOutputStream;
+import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -10,19 +10,19 @@ import javax.swing.JTextArea;
 public class ChatClientThread extends Thread {
     protected Socket socket;
     protected BufferedReader bufferedReader;
-    protected DataOutputStream dataOut;
+    protected PrintWriter dataOut;
     protected JTextArea msgs;
 
     public ChatClientThread(Socket s, JTextArea msgs) throws Exception {
         socket = s;
         bufferedReader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        dataOut = new DataOutputStream(s.getOutputStream());
+        dataOut = new PrintWriter(s.getOutputStream(), true);
         this.msgs = msgs;
     }
 
     public void send(String txt) throws IOException {
         System.out.println("Enviando: " + txt);
-        dataOut.write((txt + "\n").getBytes());
+        dataOut.println(txt);
     }
 
     public void run() {

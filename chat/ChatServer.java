@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
+import java.io.PrintWriter;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,8 +22,8 @@ public class ChatServer {
         BufferedReader br2 = new BufferedReader(
             new InputStreamReader(client2.getInputStream()));
 
-        DataOutputStream out1 = new DataOutputStream(client1.getOutputStream());
-        DataOutputStream out2 = new DataOutputStream(client2.getOutputStream());
+        PrintWriter out1 = new PrintWriter(client1.getOutputStream(), true);
+        PrintWriter out2 = new PrintWriter(client2.getOutputStream(), true);
 
         ChatServerThread t1 = new ChatServerThread(br1, out2);
         ChatServerThread t2 = new ChatServerThread(br2, out1);

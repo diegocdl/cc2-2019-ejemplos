@@ -1,11 +1,11 @@
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
+import java.io.PrintWriter;
 
 public class ChatServerThread extends Thread {
     protected BufferedReader in;
-    protected DataOutputStream out;
+    protected PrintWriter out;
 
-    public ChatServerThread(BufferedReader in, DataOutputStream out) {
+    public ChatServerThread(BufferedReader in, PrintWriter out) {
         this.in = in;
         this.out = out;
     }
@@ -17,7 +17,7 @@ public class ChatServerThread extends Thread {
             while(true) {
                 txt = in.readLine();
                 System.out.println("Recibi: " + txt);
-                out.write((txt + "\n").getBytes());
+                out.println(txt);
             }
         } catch (Exception e) {
             e.printStackTrace();
